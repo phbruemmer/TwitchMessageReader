@@ -34,8 +34,10 @@ async def on_ready(ready_event: EventData):
 
 async def periodic_message(chat: Chat):
     while True:
-        await asyncio.sleep(8 * 60)
+        await asyncio.sleep(5 * 60)
         random_num = check.check_numbers()
+        random_num = str(random_num).zfill(4)
+
         print(f"[info] checking number {random_num}.")
         await chat.send_message(TARGET_CHANNEL, f"!safe {random_num}")
 

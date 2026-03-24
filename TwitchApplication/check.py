@@ -27,7 +27,20 @@ def check_numbers():
     return random_num
 
 
+# Deletes last line in a file
+def clean_file():
+    with open("numbers.txt", "r") as file:
+        lines = file.readlines()
+    if lines:
+        lines.pop()
+    with open("numbers.txt", "w") as file:
+        file.writelines(lines)
+
+
 def extract(msg):
+    if "This command is currently on cooldown" in msg:
+        clean_file()
+
     msg_extract = msg.split()
 
     if not msg_extract[0] == '!safe':
@@ -54,4 +67,4 @@ def check_num(num: int):
 
 
 if __name__ == '__main__':
-    check_num(9799)
+    clean_file()
