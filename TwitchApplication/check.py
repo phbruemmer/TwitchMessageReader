@@ -9,8 +9,6 @@ def check_numbers():
         for line in file:
             num = int(line)
 
-            print(line)
-
             if num in nums:
                 multiples += 1
             nums.add(num)
